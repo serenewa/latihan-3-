@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid rgb(199, 184, 184);
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+
+<h2>Planets Data</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:60%;">Name</th>
+    <th style="width:40%;">Rotation Period </th>
+    <th style="width:40%;">Orbital Period</th>
+    <th style="width:40%;">Diameter</th>
+    <th style="width:40%;">Climate </th>
+  </tr>
+  <tr>
+    <td>Alderaan</td>
+    <td>24</td>
+    <td>364</td>
+    <td>12500</td>
+    <td>temperate</td>
+  </tr>
+  <tr>
+    <td>Yavin IV</td>
+    <td>24</td>
+    <td>4818</td>
+    <td>10200</td>
+    <td>Temperate, Tropical</td>
+  </tr>
+  <tr>
+    <td>Hoth</td>
+    <td>23</td>
+    <td>549</td>
+    <td>7200</td>
+    <td>Frozen</td>
+  </tr>
+  <tr>
+    <td>Dagobah</td>
+    <td>23</td>
+    <td>341</td>
+    <td>8900</td>
+    <td>Murky</td>
+  </tr>
+  <tr>
+    <td>Bespin</td>
+    <td>12</td>
+    <td>5110/td>
+    <td>118000</td>
+    <td>Temperate</td>
+  </tr>
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+</body>
+</html>
